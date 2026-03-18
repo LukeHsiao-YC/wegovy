@@ -15,16 +15,17 @@
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#0d9488', // Teal-600
-                        secondary: '#0f766e', // Teal-700
-                        accent: '#ccfbf1', // Teal-50
+                        primary: '#ea580c', // orange-600
+                        secondary: '#c2410c', // orange-700
+                        accent: '#fff7ed', // orange-50
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #fafaf9; }
+        html { scroll-behavior: smooth; }
         .accordion-content {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             max-height: 0;
@@ -44,125 +45,150 @@
         .timeline-dot {
             box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05);
         }
+        #backToTop {
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+        #backToTop.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-teal-200 selection:text-teal-900 leading-relaxed">
+<body class="text-stone-800 antialiased selection:bg-orange-200 selection:text-orange-900 leading-relaxed">
 
-    <header class="bg-gradient-to-br from-teal-600 to-emerald-700 text-white py-16 px-4 shadow-lg relative overflow-hidden">
+    <header class="bg-gradient-to-br from-amber-500 to-orange-600 text-white py-16 px-4 shadow-lg relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
             <i class="fa-solid fa-leaf absolute -top-10 -left-10 text-9xl transform rotate-45"></i>
             <i class="fa-solid fa-heart-pulse absolute bottom-10 -right-10 text-9xl transform -rotate-12"></i>
         </div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="bg-teal-800/50 text-teal-100 py-1 px-3 rounded-full text-sm font-medium tracking-wider mb-6 inline-block shadow-sm">門診衛教資訊</span>
-            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight tracking-wide">健康減重的新選項<br><span class="text-teal-200 text-2xl md:text-4xl mt-2 block">認識週纖達 (Wegovy)</span></h1>
+            <span class="bg-orange-800/40 text-orange-50 py-1 px-3 rounded-full text-sm font-medium tracking-wider mb-6 inline-block shadow-sm">門診衛教資訊</span>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight tracking-wide">健康減重的新選項<br><span class="text-orange-100 text-2xl md:text-4xl mt-2 block">認識週纖達 (Wegovy)</span></h1>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-12 -mt-10 relative z-20">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-orange-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <ul class="flex overflow-x-auto py-3 gap-6 text-sm md:text-base whitespace-nowrap hide-scrollbar justify-start md:justify-center">
+                <li><a href="#intro" class="text-stone-600 hover:text-orange-600 font-bold transition-colors">認識藥物</a></li>
+                <li><a href="#timeline" class="text-stone-600 hover:text-orange-600 font-bold transition-colors">12個月地圖</a></li>
+                <li><a href="#qa" class="text-stone-600 hover:text-orange-600 font-bold transition-colors">常見問題</a></li>
+                <li><a href="#checklist" class="text-stone-600 hover:text-orange-600 font-bold transition-colors">觀察重點</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 relative z-20">
         
-        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-12 glass-card border border-teal-100">
+        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-12 glass-card border border-orange-100">
             <div class="flex flex-col md:flex-row items-start gap-6">
-                <div class="bg-teal-50 text-teal-600 p-4 rounded-full shrink-0 mx-auto md:mx-0 shadow-inner">
+                <div class="bg-orange-50 text-orange-600 p-4 rounded-full shrink-0 mx-auto md:mx-0 shadow-inner">
                     <i class="fa-solid fa-user-doctor text-3xl"></i>
                 </div>
                 <div>
-                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">這絕對不是因為您不夠努力</h2>
-                    <p class="text-slate-600 mb-4 text-justify">
+                    <h2 class="text-xl md:text-2xl font-bold text-stone-800 mb-4 border-b border-stone-100 pb-2">這絕對不是因為您不夠努力</h2>
+                    <p class="text-stone-600 mb-4 text-justify">
                         調整飲食跟運動來達到健康的體態，一直都是我們的終極目標。但有時候您可能會發現，明明孩子（或自己）已經很努力了，體重計上的數字還是卡關，抽血報告上的紅字依然沒有消失。
                     </p>
-                    <p class="text-slate-600 mb-4 text-justify font-medium text-teal-800">
+                    <p class="text-stone-600 mb-4 text-justify font-medium text-orange-800">
                         請記得，這絕對不代表不夠努力，或是意志力不夠堅定！
                     </p>
-                    <p class="text-slate-600 text-justify">
+                    <p class="text-stone-600 text-justify">
                         現代醫學已經證實肥胖是一種長期的慢性狀態。這時候，我們可以來認識一個安全且有效的新選項：<strong>腸泌素</strong>。目前針對 12 歲以上達到肥胖標準的朋友，在持續調整飲食與運動的同時，可以同步使用腸泌素來輔助，讓這段追求健康的減重過程走得更順利、更有信心。
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="mb-16">
+        <div id="intro" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3"><i class="fa-solid fa-notes-medical text-teal-600 mr-2"></i>認識週纖達 (Wegovy) 與它的健康效益</h2>
-                <p class="text-slate-500">不只是體重計上的數字下降，更是全身代謝的重新開機</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-solid fa-notes-medical text-orange-600 mr-2"></i>認識週纖達 (Wegovy) 與它的健康效益</h2>
+                <p class="text-stone-500">不只是體重計上的數字下降，更是全身代謝的重新開機</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all">
+                <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 hover:shadow-md transition-all">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="bg-amber-100 text-amber-600 w-12 h-12 rounded-lg flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-brain"></i></div>
-                        <h3 class="text-lg font-bold text-slate-800">它是怎麼幫忙減重的？</h3>
+                        <h3 class="text-lg font-bold text-stone-800">它是怎麼幫忙減重的？</h3>
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed">它能模擬我們腸道自然分泌的飽足感荷爾蒙。一方面讓胃的消化變慢，食物停留時間變長；另一方面直接告訴大腦的食慾中樞「我已經吃飽了」，從根本降低對高熱量食物的渴望與飢餓感。</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">它能模擬我們腸道自然分泌的飽足感荷爾蒙。一方面讓胃的消化變慢，食物停留時間變長；另一方面直接告訴大腦的食慾中樞「我已經吃飽了」，從根本降低對高熱量食物的渴望與飢餓感。</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all">
+                <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 hover:shadow-md transition-all">
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-lg flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-syringe"></i></div>
-                        <h3 class="text-lg font-bold text-slate-800">實際上怎麼使用？</h3>
+                        <div class="bg-rose-100 text-rose-600 w-12 h-12 rounded-lg flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-syringe"></i></div>
+                        <h3 class="text-lg font-bold text-stone-800">實際上怎麼使用？</h3>
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed">每週只需在腹部或大腿皮下注射一次。它的針頭極細，痛感非常低。為了讓身體溫和適應，我會為您制定「階梯式增量計畫」，一開始先用低劑量，之後再慢慢調升到最適合您的治療劑量。</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">每週只需在腹部或大腿皮下注射一次。它的針頭極細，痛感非常低。為了讓身體溫和適應，我會為您制定「階梯式增量計畫」，一開始先用低劑量，之後再慢慢調升到最適合您的治療劑量。</p>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl border border-teal-200 p-6 md:p-8">
+            <div class="bg-gradient-to-r from-orange-50 to-rose-50 rounded-xl border border-orange-200 p-6 md:p-8">
                 <div class="flex items-center gap-3 mb-4">
-                    <i class="fa-solid fa-microscope text-teal-700 text-2xl"></i>
-                    <h3 class="text-xl font-bold text-teal-800">最新醫學研究：除了變瘦，還有哪些好處？</h3>
+                    <i class="fa-solid fa-microscope text-orange-700 text-2xl"></i>
+                    <h3 class="text-xl font-bold text-orange-800">最新醫學研究：除了變瘦，還有哪些好處？</h3>
                 </div>
-                <p class="text-slate-700 mb-6 text-sm md:text-base">近年的大型國際研究（如 SELECT 試驗與 STEP 系列研究）發現，Wegovy 不僅能有效減重，更帶來了全面的健康保護：</p>
+                <p class="text-stone-700 mb-6 text-sm md:text-base">近年的大型國際研究（如 SELECT 試驗與 STEP 系列研究）發現，Wegovy 不僅能有效減重，更帶來了全面的健康保護：</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white/80 p-4 rounded-lg shadow-sm">
                         <div class="text-rose-500 mb-2"><i class="fa-solid fa-heart-circle-check text-2xl"></i></div>
-                        <h4 class="font-bold text-slate-800 mb-1 text-sm">心血管風險下降</h4>
-                        <p class="text-slate-600 text-xs">研究證實，使用後能顯著降低成年人心臟病發作、中風等重大心血管不良事件的發生率達 20%。</p>
+                        <h4 class="font-bold text-stone-800 mb-1 text-sm">心血管風險下降</h4>
+                        <p class="text-stone-600 text-xs">研究證實，使用後能顯著降低成年人心臟病發作、中風等重大心血管不良事件的發生率達 20%。</p>
                     </div>
                     <div class="bg-white/80 p-4 rounded-lg shadow-sm">
                         <div class="text-amber-600 mb-2"><i class="fa-solid fa-shield-virus text-2xl"></i></div>
-                        <h4 class="font-bold text-slate-800 mb-1 text-sm">改善脂肪肝與發炎</h4>
-                        <p class="text-slate-600 text-xs">體重下降伴隨著內臟脂肪減少，能有效改善肝指數，減輕肝臟脂肪堆積與全身性的慢性發炎。</p>
+                        <h4 class="font-bold text-stone-800 mb-1 text-sm">改善脂肪肝與發炎</h4>
+                        <p class="text-stone-600 text-xs">體重下降伴隨著內臟脂肪減少，能有效改善肝指數，減輕肝臟脂肪堆積與全身性的慢性發炎。</p>
                     </div>
                     <div class="bg-white/80 p-4 rounded-lg shadow-sm">
-                        <div class="text-indigo-500 mb-2"><i class="fa-solid fa-child-reaching text-2xl"></i></div>
-                        <h4 class="font-bold text-slate-800 mb-1 text-sm">青少年代謝指標逆轉</h4>
-                        <p class="text-slate-600 text-xs">針對青少年的研究顯示，除了明顯的體重下降，血糖、三酸甘油酯等代謝「紅字」都有顯著的改善與逆轉。</p>
+                        <div class="text-orange-500 mb-2"><i class="fa-solid fa-child-reaching text-2xl"></i></div>
+                        <h4 class="font-bold text-stone-800 mb-1 text-sm">青少年代謝指標逆轉</h4>
+                        <p class="text-stone-600 text-xs">針對青少年的研究顯示，除了明顯的體重下降，血糖、三酸甘油酯等代謝「紅字」都有顯著的改善與逆轉。</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-16">
+        <div id="timeline" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3"><i class="fa-solid fa-map-location-dot text-teal-600 mr-2"></i>這一年，我們會經歷什麼？</h2>
-                <p class="text-slate-500">減重是一場馬拉松，為您規劃 12 個月的階段性目標</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-solid fa-map-location-dot text-orange-600 mr-2"></i>這一年，我們會經歷什麼？</h2>
+                <p class="text-stone-500">減重是一場馬拉松，為您規劃 12 個月的階段性目標</p>
             </div>
             
-            <div class="bg-white rounded-2xl shadow-md border border-slate-100 p-6 md:p-10">
-                <div class="relative border-l-4 border-teal-200 ml-3 md:ml-8 space-y-10 pb-4">
+            <div class="bg-white rounded-2xl shadow-md border border-stone-100 p-6 md:p-10">
+                <div class="relative border-l-4 border-orange-200 ml-3 md:ml-8 space-y-10 pb-4">
                     
                     <div class="relative pl-8 md:pl-10">
-                        <div class="absolute -left-[22px] top-1 bg-teal-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-1"></i></div>
-                        <h3 class="text-xl font-bold text-teal-700 mb-2">適應與啟動期 <span class="text-sm font-normal text-slate-500 ml-2">(第 1 到 5 個月)</span></h3>
-                        <p class="text-slate-600 mb-3 text-sm">
+                        <div class="absolute -left-[22px] top-1 bg-orange-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-1"></i></div>
+                        <h3 class="text-xl font-bold text-orange-700 mb-2">適應與啟動期 <span class="text-sm font-normal text-stone-500 ml-2">(第 1 到 5 個月)</span></h3>
+                        <p class="text-stone-600 mb-3 text-sm">
                             <strong>這階段的重點：</strong>我會根據您或孩子對藥物的反應和副作用狀況，為您量身「逐步微調增加藥量」。
-                            <br><span class="text-teal-800 font-medium">請放心，在開始用藥的初期，您就會明顯感覺到食慾下降，並開始看到體重計上的數字穩步減少，不需要苦等半年才看見成效喔！</span>
+                            <br><span class="text-orange-800 font-medium">請放心，在開始用藥的初期，您就會明顯感覺到食慾下降，並開始看到體重計上的數字穩步減少，不需要苦等半年才看見成效喔！</span>
                         </p>
-                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-600 border border-slate-100">
+                        <div class="bg-stone-50 p-4 rounded-lg text-sm text-stone-600 border border-stone-100">
                             <ul class="list-none space-y-2">
-                                <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> <strong>感受初期的變化：</strong>趁著食量自然變小，陪孩子分辨什麼是「肚子真的餓」，什麼只是「嘴巴饞」。</li>
-                                <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> <strong>靈活應對與調整：</strong>剛開始有一點噁心感是正常的（代表藥物正在作用），我們會教您怎麼吃（吃七八分飽、避開油膩炸物）來減輕不舒服，我也會依據這個狀況隨時為您調整藥量。</li>
-                                <li><i class="fa-solid fa-check text-teal-500 mr-2"></i> <strong>輕鬆活動起來：</strong>還不用勉強做劇烈運動，先從每天多走幾千步、慢慢活動起來開始。</li>
+                                <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> <strong>了解身體起點：</strong>在正式開始前，我們會先安排一次抽血，確實了解整體身體狀況以及代謝症候群的相關指標，確保用藥的安全基礎。</li>
+                                <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> <strong>感受初期的變化：</strong>趁著食量自然變小，陪孩子分辨什麼是「肚子真的餓」，什麼只是「嘴巴饞」。</li>
+                                <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> <strong>靈活應對與調整：</strong>剛開始有一點噁心感是正常的（代表藥物正在作用），我們會教您怎麼吃（吃七八分飽、避開油膩炸物）來減輕不舒服，我也會依據這個狀況隨時為您調整藥量。</li>
+                                <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> <strong>輕鬆活動起來：</strong>還不用勉強做劇烈運動，先從每天多走幾千步、慢慢活動起來開始。</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="relative pl-8 md:pl-10">
                         <div class="absolute -left-[22px] top-1 bg-amber-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-2"></i></div>
-                        <h3 class="text-xl font-bold text-amber-600 mb-2">黃金減脂期 <span class="text-sm font-normal text-slate-500 ml-2">(第 6 到 12 個月)</span></h3>
-                        <p class="text-slate-600 mb-3 text-sm"><strong>這階段的重點：</strong>這時通常會調升到最適劑量，也是認真燃燒脂肪、效果最明顯的時候，同時要保護發育所需的肌肉不流失。</p>
-                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-600 border border-slate-100">
+                        <h3 class="text-xl font-bold text-amber-600 mb-2">黃金減脂期 <span class="text-sm font-normal text-stone-500 ml-2">(第 6 到 12 個月)</span></h3>
+                        <p class="text-stone-600 mb-3 text-sm"><strong>這階段的重點：</strong>這時通常會調升到最適劑量，也是認真燃燒脂肪、效果最明顯的時候，同時要保護發育所需的肌肉不流失。</p>
+                        <div class="bg-stone-50 p-4 rounded-lg text-sm text-stone-600 border border-stone-100">
                             <ul class="list-none space-y-2">
                                 <li><i class="fa-solid fa-check text-amber-500 mr-2"></i> <strong>盯緊蛋白質：</strong>確保每天吃夠肉、蛋、豆類，別讓寶貴的肌肉跟著流失。</li>
                                 <li><i class="fa-solid fa-check text-amber-500 mr-2"></i> <strong>開始肌力訓練：</strong>建議每週安排 2 次微喘的運動或重訓，讓體態更結實。</li>
@@ -172,13 +198,13 @@
                     </div>
                     
                     <div class="relative pl-8 md:pl-10">
-                        <div class="absolute -left-[22px] top-1 bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-3"></i></div>
-                        <h3 class="text-xl font-bold text-blue-600 mb-2">穩定與維持期 <span class="text-sm font-normal text-slate-500 ml-2">(滿 12 個月之後)</span></h3>
-                        <p class="text-slate-600 mb-3 text-sm"><strong>這階段的重點：</strong>體重穩定下來，大腦的食慾也習慣了，準備討論未來的長遠計畫。</p>
-                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-600 border border-slate-100">
+                        <div class="absolute -left-[22px] top-1 bg-rose-400 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-3"></i></div>
+                        <h3 class="text-xl font-bold text-rose-600 mb-2">穩定與維持期 <span class="text-sm font-normal text-stone-500 ml-2">(滿 12 個月之後)</span></h3>
+                        <p class="text-stone-600 mb-3 text-sm"><strong>這階段的重點：</strong>體重穩定下來，大腦的食慾也習慣了，準備討論未來的長遠計畫。</p>
+                        <div class="bg-stone-50 p-4 rounded-lg text-sm text-stone-600 border border-stone-100">
                             <ul class="list-none space-y-2">
-                                <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> 如果體重和健康指標都達標了，可以跟我們討論是不是能慢慢減少藥量。</li>
-                                <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> 慢慢放手，把這一年培養出來的運動與飲食習慣，變成一輩子帶得走的健康資產。</li>
+                                <li><i class="fa-solid fa-check text-rose-500 mr-2"></i> 如果體重和健康指標都達標了，可以跟我們討論是不是能慢慢減少藥量。</li>
+                                <li><i class="fa-solid fa-check text-rose-500 mr-2"></i> 慢慢放手，把這一年培養出來的運動與飲食習慣，變成一輩子帶得走的健康資產。</li>
                             </ul>
                         </div>
                     </div>
@@ -186,34 +212,34 @@
             </div>
         </div>
 
-        <div class="mb-16">
+        <div id="qa" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3"><i class="fa-regular fa-comments text-teal-600 mr-2"></i>門診最常問的幾個問題 (Q&A)</h2>
-                <p class="text-slate-500">點擊問題即可查看解答，希望能解開您心中的疑惑</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-regular fa-comments text-orange-600 mr-2"></i>門診最常問的幾個問題 (Q&A)</h2>
+                <p class="text-stone-500">點擊問題即可查看解答，希望能解開您心中的疑惑</p>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg font-bold text-teal-800 mb-3 border-l-4 border-teal-500 pl-3">關於效果與期待</h3>
+                <h3 class="text-lg font-bold text-orange-800 mb-3 border-l-4 border-orange-500 pl-3">關於效果與期待</h3>
                 <div class="space-y-3">
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 醫生，如果剛開始打的第一個月，體重下降得不多怎麼辦？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 醫生，如果剛開始打的第一個月，體重下降得不多怎麼辦？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>請先別急喔！因為每個人的體質不同，初期我們會用較低的劑量測試反應，這主要是讓身體「適應藥物」。</p>
                                 <p>其實在開始用藥的前幾個月內，您就會陸續發現孩子的食量變小、衣服變鬆、體重開始穩步下降；而當到了第 4、5 個月，藥量順利調升到最適劑量時，減重的效果就會進入最明顯的「黃金期」。這是一場馬拉松，請給孩子一點信心和時間喔！</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 瘦下來之後，皮膚會不會變得鬆垮垮的？或是臉變得很凹？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 瘦下來之後，皮膚會不會變得鬆垮垮的？或是臉變得很凹？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>青少年的新陳代謝很好，皮膚彈性通常比大人恢復得快。不過關鍵在於，這段期間「一定要讓孩子吃夠蛋白質」，而且要帶著孩子做一點「肌肉訓練（重訓）」。有肌肉撐著，皮膚才不會鬆垮垮的。</p>
                             </div>
                         </div>
@@ -224,24 +250,37 @@
             <div class="mb-6">
                 <h3 class="text-lg font-bold text-amber-700 mb-3 border-l-4 border-amber-500 pl-3">關於生活與副作用</h3>
                 <div class="space-y-3">
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 聽說剛打完會一直想吐，這樣孩子還能正常去上學嗎？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 新聞有報導打瘦瘦針會造成「胃癱瘓」或很多嚴重副作用，這真的安全嗎？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
+                                <p>看到這類新聞真的會讓人捏把冷汗，爸媽的擔心完全可以理解！</p>
+                                <p>從醫學實證的角度來看，這個藥物的原理本來就是「讓胃的消化變慢」來幫助我們延長飽足感。新聞裡提到的「胃癱瘓」是非常罕見的極端案例，通常發生在本身就患有嚴重糖尿病神經病變的成人身上。</p>
+                                <p>對於一般想要減重的朋友或是青少年，最常見的狀況其實是初期的輕微噁心或脹氣，這些感覺在身體適應後就會慢慢消失。這也是為什麼我們絕對不會一開始就下猛藥，而是採取「從小劑量慢慢往上加」的策略，只要配合門診定期追蹤，它是一個被國際認可安全的好幫手。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 聽說剛打完會一直想吐，這樣孩子還能正常去上學嗎？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>確實大約有六成的朋友初期會有輕微腸胃不舒服的感覺。建議盡量避開太油或太甜的食物（這類食物最容易引發想吐的感覺），並把打針時間安排在「週末晚上」。這樣就算最不舒服，也是在星期天家裡休息，不會影響星期一去學校或上班。</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 如果打了藥，還是忍不住吃了炸雞或披薩，會怎麼樣嗎？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 如果打了藥，還是忍不住吃了炸雞或披薩，會怎麼樣嗎？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>藥物會讓胃排空變慢，所以很快就會覺得飽了。如果明明飽了還硬塞油膩的食物，腸胃就會用「極度脹氣或噁心想吐」來抗議。這其實是藥物在溫和地「重新訓練」大腦，慢慢知道適可而止。</p>
                             </div>
                         </div>
@@ -250,26 +289,26 @@
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg font-bold text-blue-800 mb-3 border-l-4 border-blue-500 pl-3">關於發育與療程規劃</h3>
+                <h3 class="text-lg font-bold text-rose-800 mb-3 border-l-4 border-rose-500 pl-3">關於發育與療程規劃</h3>
                 <div class="space-y-3">
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 孩子還在發育，食慾變差吃得少，會不會導致長不高？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 孩子還在發育，食慾變差吃得少，會不會導致長不高？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>目前的醫學研究沒有發現這款藥會影響骨骼生長。但因為整體的食量變小了，家長一定要嚴格把關「吃的品質」。重點不是吃多少，而是吃進去了什麼。鈣質、維生素 D 和優質蛋白質，是每天都必須督促孩子吃夠的喔！</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
-                            <span class="font-medium text-slate-700">Q: 我們可以先打 3 個月或半年試試看就好嗎？停藥會不會復胖？</span>
-                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                        <button class="accordion-btn w-full text-left px-5 py-4 flex justify-between items-center hover:bg-stone-50 transition-colors focus:outline-none">
+                            <span class="font-medium text-stone-700">Q: 我們可以先打 3 個月或半年試試看就好嗎？停藥會不會復胖？</span>
+                            <i class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300"></i>
                         </button>
-                        <div class="accordion-content bg-slate-50 px-5 border-t border-slate-100">
-                            <div class="py-4 text-slate-600 text-sm space-y-2">
+                        <div class="accordion-content bg-stone-50 px-5 border-t border-stone-100">
+                            <div class="py-4 text-stone-600 text-sm space-y-2">
                                 <p>比較不建議只打幾個月就停。因為大腦需要比較長的時間（通常超過一年）才能慢慢重置對體重的認知。如果只打幾個月就停藥，身體會以為遇到飢荒，食慾反而會強烈反撲。</p>
                                 <p>如果在打針的這一年內，沒有建立起運動與原型食物的習慣，停藥後復胖機率確實很高。這一年是一個「黃金緩衝期」，我們必須趁藥物幫忙壓制食慾的時候，趕快養成好習慣，這是一項長期的健康投資。</p>
                             </div>
@@ -279,33 +318,33 @@
             </div>
         </div>
 
-        <div class="mb-16">
-            <div class="bg-slate-800 rounded-2xl shadow-xl p-6 md:p-8 text-white relative overflow-hidden">
+        <div id="checklist" class="mb-16 pt-24 -mt-20">
+            <div class="bg-stone-800 rounded-2xl shadow-xl p-6 md:p-8 text-white relative overflow-hidden">
                 <div class="absolute right-0 bottom-0 opacity-10"><i class="fa-solid fa-clipboard-check text-9xl"></i></div>
-                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 relative z-10"><i class="fa-solid fa-list-check text-teal-400"></i> 日常觀察重點 (什麼時候該提早回診？)</h2>
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 relative z-10"><i class="fa-solid fa-list-check text-orange-400"></i> 日常觀察重點 (什麼時候該提早回診？)</h2>
                 <div class="overflow-x-auto relative z-10">
                     <table class="w-full text-left border-collapse min-w-[600px]">
                         <thead>
-                            <tr class="border-b border-slate-600">
-                                <th class="py-3 px-4 text-teal-300 font-semibold w-1/4">觀察項目</th>
-                                <th class="py-3 px-4 text-teal-300 font-semibold w-2/4">平時在家要注意什麼？</th>
+                            <tr class="border-b border-stone-600">
+                                <th class="py-3 px-4 text-orange-300 font-semibold w-1/4">觀察項目</th>
+                                <th class="py-3 px-4 text-orange-300 font-semibold w-2/4">平時在家要注意什麼？</th>
                                 <th class="py-3 px-4 text-rose-400 font-semibold w-1/4">⚠️ 警示訊號 (請回診)</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm divide-y divide-slate-700">
+                        <tbody class="text-sm divide-y divide-stone-700">
                             <tr>
-                                <td class="py-4 px-4 font-medium"><i class="fa-regular fa-face-frown text-slate-400 mr-2"></i>情緒狀態</td>
-                                <td class="py-4 px-4 text-slate-300">孩子會不會因為不能隨心所欲吃東西，變得特別憂鬱或暴躁？</td>
+                                <td class="py-4 px-4 font-medium"><i class="fa-regular fa-face-frown text-stone-400 mr-2"></i>情緒狀態</td>
+                                <td class="py-4 px-4 text-stone-300">孩子會不會因為不能隨心所欲吃東西，變得特別憂鬱或暴躁？</td>
                                 <td class="py-4 px-4 text-rose-300 font-medium">出現極度消沉，或有負面念頭。</td>
                             </tr>
                             <tr>
-                                <td class="py-4 px-4 font-medium"><i class="fa-solid fa-ruler-vertical text-slate-400 mr-2"></i>生長發育</td>
-                                <td class="py-4 px-4 text-slate-300">幫孩子每個月記錄一次身高和體重，觀察曲線變化。</td>
+                                <td class="py-4 px-4 font-medium"><i class="fa-solid fa-ruler-vertical text-stone-400 mr-2"></i>生長發育</td>
+                                <td class="py-4 px-4 text-stone-300">幫孩子每個月記錄一次身高和體重，觀察曲線變化。</td>
                                 <td class="py-4 px-4 text-rose-300 font-medium">身高連續半年都沒長，或體重掉太快。</td>
                             </tr>
                             <tr>
-                                <td class="py-4 px-4 font-medium"><i class="fa-solid fa-stomach text-slate-400 mr-2"></i>腸胃反應</td>
-                                <td class="py-4 px-4 text-slate-300">剛開始的噁心感，有沒有隨著時間慢慢適應並減輕？</td>
+                                <td class="py-4 px-4 font-medium"><i class="fa-solid fa-stomach text-stone-400 mr-2"></i>腸胃反應</td>
+                                <td class="py-4 px-4 text-stone-300">剛開始的噁心感，有沒有隨著時間慢慢適應並減輕？</td>
                                 <td class="py-4 px-4 text-rose-300 font-medium">完全無法進食，或肚子痛得非常厲害。</td>
                             </tr>
                         </tbody>
@@ -314,9 +353,9 @@
             </div>
         </div>
 
-        <div class="bg-teal-50 rounded-2xl border border-teal-200 p-8 text-center mb-12 shadow-sm">
-            <h2 class="text-2xl font-bold text-teal-800 mb-4">還有其他疑問嗎？歡迎與我聯繫</h2>
-            <p class="text-slate-600 mb-8 max-w-xl mx-auto">減重的路上您和孩子都不孤單。如果在療程中遇到任何狀況，或是想進一步評估是否適合使用，都歡迎透過以下管道發問與預約：</p>
+        <div class="bg-orange-50 rounded-2xl border border-orange-200 p-8 text-center mb-12 shadow-sm">
+            <h2 class="text-2xl font-bold text-orange-800 mb-4">還有其他疑問嗎？歡迎與我聯繫</h2>
+            <p class="text-stone-600 mb-8 max-w-xl mx-auto">減重的路上您和孩子都不孤單。如果在療程中遇到任何狀況，或是想進一步評估是否適合使用，都歡迎透過以下管道發問與預約：</p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="#" class="flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-3 px-8 rounded-full transition-all w-full sm:w-auto shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
@@ -333,19 +372,23 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-10 px-4 mt-8">
+    <footer class="bg-stone-900 text-stone-400 py-10 px-4 mt-8">
         <div class="max-w-4xl mx-auto text-center">
             <div class="mb-6">
-                <p class="text-slate-300 font-medium text-lg">以上衛教資訊由 <span class="text-teal-400 font-bold">蕭宇超醫師</span> 整理提供</p>
+                <p class="text-stone-300 font-medium text-lg">以上衛教資訊由 <span class="text-orange-400 font-bold">蕭宇超醫師</span> 整理提供</p>
             </div>
             <p class="text-sm mb-2 opacity-80">⚠️ 溫馨提醒：本網頁資訊僅供看診前/後的衛教參考，幫助您建立正確的醫療觀念，</p>
             <p class="text-sm opacity-80">實際的治療計畫仍需由專業醫師親自看診後，依個人體質與抽血報告評估決定喔！</p>
             
-            <div class="mt-8 pt-6 border-t border-slate-700/50 text-xs opacity-60">
+            <div class="mt-8 pt-6 border-t border-stone-700/50 text-xs opacity-60">
                 <p>參考文獻：NEJM (2022) STEP TEENS trial / Nature Medicine (2022) / SELECT trial</p>
             </div>
         </div>
     </footer>
+
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-orange-500 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-orange-600 transition-colors z-50 focus:outline-none" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="回到最上面">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -364,6 +407,15 @@
                         icon.classList.add('rotate-180');
                     }
                 });
+            });
+
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
             });
         });
     </script>

@@ -62,6 +62,7 @@
 </head>
 <body class="text-stone-800 antialiased selection:bg-orange-200 selection:text-orange-900 leading-relaxed">
 
+    <!-- Header / Hero Section -->
     <header class="bg-gradient-to-br from-amber-500 to-orange-600 text-white py-16 px-4 shadow-lg relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
             <i class="fa-solid fa-leaf absolute -top-10 -left-10 text-9xl transform rotate-45"></i>
@@ -74,6 +75,7 @@
         </div>
     </header>
 
+    <!-- Sticky Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-orange-100">
         <div class="max-w-4xl mx-auto px-4">
             <ul class="flex overflow-x-auto py-3 gap-6 text-sm md:text-base whitespace-nowrap hide-scrollbar justify-start md:justify-center">
@@ -87,6 +89,7 @@
 
     <main class="max-w-4xl mx-auto px-4 py-8 relative z-20">
         
+        <!-- Welcome Card -->
         <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-12 glass-card border border-orange-100">
             <div class="flex flex-col md:flex-row items-start gap-6">
                 <div class="bg-orange-50 text-orange-600 p-4 rounded-full shrink-0 mx-auto md:mx-0 shadow-inner">
@@ -107,6 +110,7 @@
             </div>
         </div>
 
+        <!-- Section 1: Intro -->
         <div id="intro" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-solid fa-notes-medical text-orange-600 mr-2"></i>認識週纖達 (Wegovy) 與它的健康效益</h2>
@@ -158,6 +162,7 @@
             </div>
         </div>
 
+        <!-- Section 2: Timeline -->
         <div id="timeline" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-solid fa-map-location-dot text-orange-600 mr-2"></i>這一年，我們會經歷什麼？</h2>
@@ -167,6 +172,7 @@
             <div class="bg-white rounded-2xl shadow-md border border-stone-100 p-6 md:p-10">
                 <div class="relative border-l-4 border-orange-200 ml-3 md:ml-8 space-y-10 pb-4">
                     
+                    <!-- Phase 1 -->
                     <div class="relative pl-8 md:pl-10">
                         <div class="absolute -left-[22px] top-1 bg-orange-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-1"></i></div>
                         <h3 class="text-xl font-bold text-orange-700 mb-2">適應與啟動期 <span class="text-sm font-normal text-stone-500 ml-2">(第 1 到 5 個月)</span></h3>
@@ -184,6 +190,7 @@
                         </div>
                     </div>
                     
+                    <!-- Phase 2 -->
                     <div class="relative pl-8 md:pl-10">
                         <div class="absolute -left-[22px] top-1 bg-amber-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-2"></i></div>
                         <h3 class="text-xl font-bold text-amber-600 mb-2">黃金減脂期 <span class="text-sm font-normal text-stone-500 ml-2">(第 6 到 12 個月)</span></h3>
@@ -197,6 +204,7 @@
                         </div>
                     </div>
                     
+                    <!-- Phase 3 -->
                     <div class="relative pl-8 md:pl-10">
                         <div class="absolute -left-[22px] top-1 bg-rose-400 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold timeline-dot"><i class="fa-solid fa-3"></i></div>
                         <h3 class="text-xl font-bold text-rose-600 mb-2">穩定與維持期 <span class="text-sm font-normal text-stone-500 ml-2">(滿 12 個月之後)</span></h3>
@@ -212,6 +220,7 @@
             </div>
         </div>
 
+        <!-- Section 3: Q&A -->
         <div id="qa" class="mb-16 pt-24 -mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-stone-800 mb-3"><i class="fa-regular fa-comments text-orange-600 mr-2"></i>門診最常問的幾個問題 (Q&A)</h2>
@@ -318,6 +327,7 @@
             </div>
         </div>
 
+        <!-- Section 4: Checklist -->
         <div id="checklist" class="mb-16 pt-24 -mt-20">
             <div class="bg-stone-800 rounded-2xl shadow-xl p-6 md:p-8 text-white relative overflow-hidden">
                 <div class="absolute right-0 bottom-0 opacity-10"><i class="fa-solid fa-clipboard-check text-9xl"></i></div>
@@ -353,17 +363,18 @@
             </div>
         </div>
 
+        <!-- Section 5: Contact & Questions -->
         <div class="bg-orange-50 rounded-2xl border border-orange-200 p-8 text-center mb-12 shadow-sm">
             <h2 class="text-2xl font-bold text-orange-800 mb-4">還有其他疑問嗎？歡迎與我聯繫</h2>
             <p class="text-stone-600 mb-8 max-w-xl mx-auto">減重的路上您和孩子都不孤單。如果在療程中遇到任何狀況，或是想進一步評估是否適合使用，都歡迎透過以下管道發問與預約：</p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#" class="flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-3 px-8 rounded-full transition-all w-full sm:w-auto shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <a href="https://lin.ee/fAzcScx" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-3 px-8 rounded-full transition-all w-full sm:w-auto shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                     <i class="fa-brands fa-line text-2xl"></i>
                     <span>加入官方 LINE 諮詢</span>
                 </a>
                 
-                <a href="#" class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold py-3 px-8 rounded-full transition-all w-full sm:w-auto shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <a href="https://www.facebook.com/share/1FoPpvVSZs/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold py-3 px-8 rounded-full transition-all w-full sm:w-auto shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                     <i class="fa-brands fa-facebook text-2xl"></i>
                     <span>追蹤 Facebook 專頁</span>
                 </a>
@@ -372,6 +383,7 @@
 
     </main>
 
+    <!-- Footer -->
     <footer class="bg-stone-900 text-stone-400 py-10 px-4 mt-8">
         <div class="max-w-4xl mx-auto text-center">
             <div class="mb-6">
@@ -386,6 +398,7 @@
         </div>
     </footer>
 
+    <!-- Back to top button -->
     <button id="backToTop" class="fixed bottom-6 right-6 bg-orange-500 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-orange-600 transition-colors z-50 focus:outline-none" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="回到最上面">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
